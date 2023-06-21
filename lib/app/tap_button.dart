@@ -4,24 +4,24 @@ import 'package:flutter/material.dart';
 class TapButton extends StatefulWidget {
   TapButton({
     super.key,
-    required this.duration,
     required this.text,
+    this.duration = const Duration(milliseconds: 500),
+    this.backgroundColor = Colors.red,
     this.textColor,
-    this.pulsePx = 5,
     this.height = 50,
     this.width = 100,
     this.enabled = true,
-    this.backgroundColor = Colors.red,
+    this.pulsePx = 5,
   });
 
-  final Duration duration;
   final String? text;
+  final Duration duration;
+  final Color? backgroundColor;
   final Color? textColor;
   final int pulsePx;
-  double width;
   double height;
+  double width;
   bool enabled;
-  Color? backgroundColor;
 
   @override
   State<TapButton> createState() => _TapButtonState();
