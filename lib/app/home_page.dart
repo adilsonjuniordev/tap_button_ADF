@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:tap_button/app/tap_button.dart';
 
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> {
           text: 'Tap Me',
           pulsePx: 100,
           enabled: true,
+          onTap: () => log('Cliquei no botão!'),
         ),
       ),
     );

@@ -5,6 +5,7 @@ class TapButton extends StatefulWidget {
   TapButton({
     super.key,
     required this.text,
+    required this.onTap,
     this.duration = const Duration(milliseconds: 500),
     this.backgroundColor = Colors.red,
     this.textColor,
@@ -15,6 +16,7 @@ class TapButton extends StatefulWidget {
   });
 
   final String? text;
+  final Function? onTap;
   final Duration duration;
   final Color? backgroundColor;
   final Color? textColor;
@@ -43,7 +45,10 @@ class _TapButtonState extends State<TapButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.enabled ? _animateContainer : null,
+      onTap: () {
+        if (widget.onTap != null) widget.onTap!();
+        if (widget.enabled) _animateContainer();
+      },
       child: AnimatedContainer(
         padding: const EdgeInsets.all(10),
         duration: widget.duration,
