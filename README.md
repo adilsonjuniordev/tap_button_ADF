@@ -5,11 +5,14 @@
 Tap Me Button
 
 </h1>
+<p>
+Este projeto foi criado para fins didáticos, com a finalidade de participar do desafio proposto pelo Rodrigo Rahman da Academia do Flutter no dia 20/06/2023.
+<br><br>
+Proposta de criar um botão com bordas arredondadas como mostrado abaixo:
 </p>
 
 <p align="center">
     <img src="assets/screen1.gif" alt="Texto alternativo" width="300px">
-p>
 
 ## Parâmetros
 
