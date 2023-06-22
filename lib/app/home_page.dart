@@ -20,10 +20,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: TapButton(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 100),
           text: 'Tap Me',
-          pulsePx: 100,
-          enabled: true,
+          pulsePx: 20,
           onTap: () => log('Cliquei no botão!'),
         ),
       ),

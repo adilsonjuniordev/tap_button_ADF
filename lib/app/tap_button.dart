@@ -2,11 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class TapButton extends StatefulWidget {
-  TapButton({
+  /// Botão que expande ao ser tocado.
+  /// Foi desenvolvido para fins didáticos em um desafio da Academia do Flutter no dia 20/06/2023.
+  const TapButton({
     super.key,
     required this.text,
     required this.onTap,
-    this.duration = const Duration(milliseconds: 500),
+    this.duration = const Duration(milliseconds: 100),
     this.backgroundColor = Colors.red,
     this.textColor,
     this.height = 50,
@@ -15,30 +17,57 @@ class TapButton extends StatefulWidget {
     this.pulsePx = 5,
   });
 
+  /// Texto a ser exibido no botão.
   final String? text;
+
+  /// Função a ser executada ao clicar no botão.
   final Function? onTap;
+
+  /// Duração da animação ao tocar o botão.
   final Duration duration;
+
+  /// Cor de fundo do botão.
   final Color? backgroundColor;
+
+  /// Cor do texto do botão.
   final Color? textColor;
+
+  /// Valor em pixels que o botão se expande na animação ao tocar no botão.
   final int pulsePx;
-  double height;
-  double width;
-  bool enabled;
+
+  /// Altura do botão.
+  final double height;
+
+  /// Largura do botão.
+  final double width;
+
+  /// Define se o botão está habilitado ou não.
+  final bool enabled;
 
   @override
   State<TapButton> createState() => _TapButtonState();
 }
 
 class _TapButtonState extends State<TapButton> {
+  late double height;
+  late double width;
+
+  @override
+  void initState() {
+    super.initState();
+    height = widget.height;
+    width = widget.width;
+  }
+
   Future<void> _animateContainer() async {
     setState(() {
-      widget.height = widget.height + widget.pulsePx;
-      widget.width = widget.width + widget.pulsePx;
+      height = height + widget.pulsePx;
+      width = width + widget.pulsePx;
     });
-    await Future.delayed(const Duration(milliseconds: 50));
+    await Future.delayed(widget.duration);
     setState(() {
-      widget.height = widget.height - widget.pulsePx;
-      widget.width = widget.width - widget.pulsePx;
+      height = height - widget.pulsePx;
+      width = width - widget.pulsePx;
     });
   }
 
@@ -52,8 +81,8 @@ class _TapButtonState extends State<TapButton> {
       child: AnimatedContainer(
         padding: const EdgeInsets.all(10),
         duration: widget.duration,
-        height: widget.height,
-        width: widget.width,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: widget.enabled ? widget.backgroundColor : Colors.grey.withOpacity(0.6),
